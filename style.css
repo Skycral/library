@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---- LAYOUT ---- */
+/* Overall */
+
+body {
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+}
+
+/* Main layout */
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+/* ---- END LAYOUT ---- */
+
+
+/* ---- HEADER ---- */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.profile {
+  display: flex;
+  gap: 1rem;
+}
+/* ---- END HEADER ---- */
+
+
+/* ---- MAIN ---- */
+
+/* LIBRARY */
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.book {
+  border: 1px solid black;
+  min-height: 200px;
+  padding: 1rem;
+}
+
+
+/* SIDEBARS */
+
+.sidebar-left {
+
+}
+
+.sidebar-right {
+
+}
+
+
+/* ---- END MAIN ---- */
+
+
+/* ---- FOOTER ---- */
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---- END FOOTER ---- */
