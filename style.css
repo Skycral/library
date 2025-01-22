@@ -2,21 +2,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Major Mono Display", monospace;
 }
 
 /* ---- LAYOUT ---- */
 /* Overall */
 
-body {
-  display: grid;
-  grid-template-rows: 1fr 5fr 1fr;
-}
 
 /* Main layout */
 
 main {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 /* ---- END LAYOUT ---- */
@@ -26,12 +23,26 @@ main {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2rem;
+  background-color: indigo;
+  color: white;
+  box-shadow: 1px 1px 4px 1px grey;
+}
+
+.my-library {
+  font-size: 1.5rem;
+  font-weight: bolder;
 }
 
 .profile {
   display: flex;
   gap: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 /* ---- END HEADER ---- */
 
@@ -40,9 +51,13 @@ header {
 
 /* LIBRARY */
 
+.library {
+  padding: 2rem;
+}
+
 .books {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
 
@@ -56,8 +71,47 @@ header {
 /* SIDEBARS */
 
 .sidebar-left {
-
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
 }
+
+.create-book {
+  display: grid;
+  gap: 1rem;
+}
+
+.form {
+  display: none;
+}
+
+.fieldset {
+  display: grid;
+  gap: 0.5rem;
+  border: none;
+}
+
+.submit {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  color: indigo;
+  border: 1px solid indigo;
+}
+
+.submit:hover {
+  color: white;
+  background-color: indigo;
+}
+
+.add-book-button, .remove-book {
+  background-color: indigo;
+  color: white;
+  border: none;
+  padding: 1rem;
+  min-width: 174px;
+}
+
+/* ------------------ */
 
 .sidebar-right {
 
@@ -71,6 +125,10 @@ header {
 footer {
   display: flex;
   justify-content: center;
+  background-color: indigo;
+  color: white;
+  align-items: center;
+  padding: 1rem;
 }
 
 /* ---- END FOOTER ---- */

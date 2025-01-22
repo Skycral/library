@@ -25,8 +25,28 @@
     </div>
   </header>
   <main>
-    <aside class="left-sidebar">
-      
+    <aside class="sidebar-left">
+      <div class="create-book">
+        <button class="add-book-button">
+          Add Book
+        </button>
+        <form action="" method="post" class="form">
+          <fieldset class="fieldset">
+            <label for="title" class="input">Title: </label>
+            <input type="text" name="title" id="title" class="input">
+            <label for="author" class="input">Author: </label>
+            <input type="text" name="author" id="author" class="input">
+            <label for="year" class="input">Year: </label>
+            <input type="text" name="year" id="year" class="input">
+            <label for="pages" class="input">Pages: </label>
+            <input type="text" name="pages" id="pages" class="input">
+            <label for="read" class="input">Read: </label>
+            <input type="text" name="read" id="read" class="input">
+            <button type="submit" class="input submit">Submit</button>
+          </fieldset>
+        </form>
+        <button class="remove-book">Remove Book</button>
+      </div>
     </aside>
     <div class="library">
       <div class="books">
@@ -46,7 +66,7 @@
         </div>
       </div>
     </div>
-    <aside class="right-sidebar">
+    <aside class="sidebar-right">
 
     </aside>
   </main>
