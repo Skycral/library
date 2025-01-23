@@ -18,6 +18,7 @@ function addBookToLibrary(title, author, year, pages, Boolean) {
 }
 
 function displayBooks() {
+
   for (const book of myLibrary) {
     const divBook = document.createElement("div");
     divBook.setAttribute("class", "book");
@@ -30,30 +31,25 @@ function displayBooks() {
 
     const divAuthor = document.createElement("div");
     divAuthor.setAttribute("class", "book-author");
-    divAuthor.textContent = book.author;
+    divAuthor.textContent = 'Author: ' + book.author;
     divBook.appendChild(divAuthor);
 
     const divYear = document.createElement("div");
     divYear.setAttribute("class", "book-year");
-    divYear.textContent = book.year;
+    divYear.textContent = 'Released: ' + book.year;
     divBook.appendChild(divYear);
 
     const divPages = document.createElement("div");
     divPages.setAttribute("class", "book-pages");
-    divPages.textContent = book.pages;
+    divPages.textContent = 'Pages: ' + book.pages;
     divBook.appendChild(divPages);
 
     const divRead = document.createElement("div");
     divRead.setAttribute("class", "book-pages");
-    divRead.textContent = book.read;
+    divRead.textContent = 'Read: ' + book.read;
     divBook.appendChild(divRead);
-
   }
 }
-
-addBookToLibrary('On the Beach', "Nevil Shute", 1958, 312, 'True');
-addBookToLibrary('The Fellowship of the Ring', "John Ronald Reuel Tolkien", 1954, 423, 'True');
-displayBooks();
 
 // Toggle Book Form 
 
@@ -81,3 +77,20 @@ addBookButton.addEventListener('click', () => {
 });
 
 // Add Book
+const submit = document.querySelector('.submit');
+const input_title = document.querySelector('.input-title');
+const input_author = document.querySelector('.input-author');
+const input_year = document.querySelector('.input-year');
+const input_pages = document.querySelector('.input-pages');
+const input_read = document.querySelector('.input-read');
+
+submit.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log(input_title.value, input_author.value, input_year.value, input_pages.value, input_read.value);
+  // let createBook = new Book(input_title.value, input_author.value, input_year.value, input_pages.value, input_read.value);
+  // myLibrary.push(createBook);
+  addBookToLibrary(input_title.value, input_author.value, input_year.value, input_pages.value, input_read.value);
+  
+  displayBooks();
+  console.log(myLibrary);
+})

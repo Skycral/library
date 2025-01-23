@@ -8,6 +8,10 @@
 /* ---- LAYOUT ---- */
 /* Overall */
 
+body {
+  --main-bg: indigo;
+  --color-text: white;
+}
 
 /* Main layout */
 
@@ -25,8 +29,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-  background-color: indigo;
-  color: white;
+  background-color: var(--main-bg);
+  color: var(--color-text);
   box-shadow: 1px 1px 4px 1px grey;
 }
 
@@ -42,7 +46,7 @@ header {
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--color-text);
 }
 /* ---- END HEADER ---- */
 
@@ -57,14 +61,18 @@ a {
 
 .books {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
   gap: 2rem;
 }
 
 .book {
   border: 1px solid black;
-  min-height: 200px;
+  min-height: 175px;
   padding: 1rem;
+}
+
+.book-title {
+  font-weight: bolder;
 }
 
 
@@ -99,13 +107,13 @@ a {
 }
 
 .submit:hover {
-  color: white;
-  background-color: indigo;
+  color: var(--color-text);
+  background-color: var(--main-bg);
 }
 
 .add-book-button, .remove-book {
-  background-color: indigo;
-  color: white;
+  background-color: var(--main-bg);
+  color: var(--color-text);
   border: none;
   padding: 1rem;
   min-width: 174px;
@@ -125,10 +133,11 @@ a {
 footer {
   display: flex;
   justify-content: center;
-  background-color: indigo;
-  color: white;
+  background-color: var(--main-bg);
+  color: var(--color-text);
   align-items: center;
   padding: 1rem;
+  box-shadow: 1px 1px 4px 1px grey;
 }
 
 /* ---- END FOOTER ---- */
