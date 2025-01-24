@@ -17,7 +17,7 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2.5fr 1fr;
 }
 
 /* ---- END LAYOUT ---- */
@@ -61,7 +61,7 @@ a {
 
 .books {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
 }
 
@@ -69,12 +69,27 @@ a {
   border: 1px solid black;
   min-height: 175px;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-content {
+  justify-self: space-between;
 }
 
 .book-title {
   font-weight: bolder;
 }
 
+.remove-book {
+  background-color: var(--main-bg);
+  color: var(--color-text);
+  border: none;
+  padding: 0.2rem 0.5rem;
+  align-self: flex-end;
+  
+}
 
 /* SIDEBARS */
 
@@ -111,19 +126,18 @@ a {
   background-color: var(--main-bg);
 }
 
-.add-book-button, .remove-book {
+.add-book-button, .display-books-button {
   background-color: var(--main-bg);
   color: var(--color-text);
   border: none;
   padding: 1rem;
   min-width: 174px;
 }
-
 /* ------------------ */
 
-.sidebar-right {
+/* .sidebar-right {
 
-}
+} */
 
 
 /* ---- END MAIN ---- */
