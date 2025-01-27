@@ -65,12 +65,9 @@ function displayBooks() {
     divBook.appendChild(btnRemove);
     //Remove Books
     btnRemove.addEventListener("click", (e) => {
-      console.log(e.target.id);
-      console.log(document.getElementById(e.target.id));
-      let remove = document.getElementById(e.target.id);
-      books.removeChild(remove);
-      
-});
+      books.removeChild(divBook);
+      myLibrary.splice(+e.target.id, 1);
+      });
   }
 }
 
@@ -128,4 +125,3 @@ submit.addEventListener('click', (e) => {
 const display_books_button = document.querySelector('.display-books-button');
 
 display_books_button.addEventListener('click', () => displayBooks());
-
