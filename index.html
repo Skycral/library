@@ -34,7 +34,7 @@
           Add Book
         </button>
         <form action="" method="post" class="form">
-          <fieldset class="fieldset">
+          <div class="input-info">
             <label for="title" class="input">Title: </label>
             <input type="text" name="title" id="title" class="input-title">
             <label for="author" class="input">Author: </label>
@@ -44,9 +44,19 @@
             <label for="pages" class="input">Pages: </label>
             <input type="text" name="pages" id="pages" class="input-pages">
             <label for="read" class="input">Read: </label>
-            <input type="text" name="read" id="read" class="input-read">
+            <fieldset class="radio-alt">
+              <div class="radio-alt-1">
+                <label for="read">Yes</label>
+                <input type="radio" name="read" id="read" value="Read" class="input-read" checked>
+              </div>
+              <div class="radio-alt-2">
+                <label for="not-read">No</label>
+                <input type="radio" name="read" id="not-read" value="Not Read" class="input-read">
+              </div>
+            </fieldset>
+            
             <button type="submit" class="input submit">Submit</button>
-          </fieldset>
+          </div>
         </form>
       </div>
     </aside>

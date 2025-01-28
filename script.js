@@ -13,8 +13,8 @@ function Book(title, author, year, pages, read) {
   this.read = read
 }
 
-function addBookToLibrary(title, author, year, pages, Boolean) {
-  createBook = new Book(title, author, year, pages, Boolean);
+function addBookToLibrary(title, author, year, pages, read) {
+  createBook = new Book(title, author, year, pages, read);
   myLibrary.push(createBook); 
 }
 
@@ -53,16 +53,57 @@ function displayBooks() {
     divPages.textContent = 'Pages: ' + book.pages;
     book_content.appendChild(divPages);
 
-    const divRead = document.createElement("div");
-    divRead.setAttribute("class", "book-pages");
-    divRead.textContent = 'Read: ' + book.read;
-    book_content.appendChild(divRead);
+
+    //Container for buttons
+    const divBtns = document.createElement("div");
+    divBtns.setAttribute("class", "button-container");
+    divBook.appendChild(divBtns);
+
+    //Toggle button for read/not
+    const toggle = document.createElement("button");
+    toggle.setAttribute("class", "toggle");
+    toggle.setAttribute("id", myLibrary.indexOf(book));
+    toggle.textContent = book.read;
+    if (book.read === "Not Read") {
+      toggle.style.backgroundColor = 'White';
+      toggle.style.color = 'Indigo';
+      toggle.style.border = '1px solid Indigo';
+      toggle.textContent = 'Not Read';
+    }
+    divBtns.appendChild(toggle);
+
+    //Toggle Read
+    function toggleRead(id) {
+      if (myLibrary[id].read === "Not Read") { //if form is seen hide it
+        toggle.style.backgroundColor = 'Indigo';
+        toggle.style.color = 'White';
+        toggle.style.border = 'None';
+        toggle.textContent = 'Read';
+        myLibrary[id].read = "Read";
+
+      } else {
+        toggle.style.backgroundColor = 'White';
+        toggle.style.color = 'Indigo';
+        toggle.style.border = '1px solid Indigo';
+        toggle.textContent = 'Not Read';
+        myLibrary[id].read = "Not Read";
+      }
+    }
+
+    toggle.addEventListener('click', (e) => {
+      let id = e.target.id;
+      console.log(myLibrary[id], myLibrary[id].read);
+      toggleRead(id);
+    });
+
+    
+
 
     const btnRemove = document.createElement("button");
     btnRemove.setAttribute("id", myLibrary.indexOf(book));
     btnRemove.setAttribute("class", "remove-book");
     btnRemove.textContent = 'Remove';
-    divBook.appendChild(btnRemove);
+    divBtns.appendChild(btnRemove);
     //Remove Books
     btnRemove.addEventListener("click", (e) => {
       books.removeChild(divBook);
@@ -71,8 +112,8 @@ function displayBooks() {
   }
 }
 
-addBookToLibrary('Alexander Hamilton', 'Ron Chernow', 2004, 818, 'False');
-addBookToLibrary(`Harry Potter and the Philosopher's Stone`, 'JK Rowling', 1997, 223, 'True');
+addBookToLibrary('Alexander Hamilton', 'Ron Chernow', 2004, 818, 'Not Read');
+addBookToLibrary(`Harry Potter and the Philosopher's Stone`, 'JK Rowling', 1997, 223, 'Read');
 
 // Toggle Book Form 
 
@@ -97,9 +138,7 @@ function toggleForm() {
   }
 }
 
-addBookButton.addEventListener('click', () => {
-  toggleForm();
-});
+addBookButton.addEventListener('click', () => toggleForm());
 
 // Add Book
 const submit = document.querySelector('.submit');
@@ -107,21 +146,30 @@ const input_title = document.querySelector('.input-title');
 const input_author = document.querySelector('.input-author');
 const input_year = document.querySelector('.input-year');
 const input_pages = document.querySelector('.input-pages');
-const input_read = document.querySelector('.input-read');
+const input_read = document.getElementsByName('read');
 
 submit.addEventListener('click', (e) => {
   e.preventDefault();
-  addBookToLibrary(input_title.value, input_author.value, input_year.value, input_pages.value, input_read.value);
+  let choice;
+  
+  for (let i = 0; i < input_read.length; i++) {
+    if (input_read[i].checked) {
+      choice = input_read[i].value
+    }
+  }
+  console.log(choice);
+  addBookToLibrary(input_title.value, input_author.value, input_year.value, input_pages.value, choice);
   displayBooks();
   console.log(myLibrary);
   input_title.value = '';
   input_author.value = '';
   input_year.value = '';
   input_pages.value = '';
-  input_read.value = '';
 })
 
 //Display Books
 const display_books_button = document.querySelector('.display-books-button');
 
 display_books_button.addEventListener('click', () => displayBooks());
+
+
