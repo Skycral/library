@@ -149,22 +149,36 @@ const input_pages = document.querySelector('.input-pages');
 const input_read = document.getElementsByName('read');
 
 submit.addEventListener('click', (e) => {
-  e.preventDefault();
-  let choice;
-  
-  for (let i = 0; i < input_read.length; i++) {
-    if (input_read[i].checked) {
-      choice = input_read[i].value
+  if (input_title.value.length < 1 || input_title.value.length > 40) {
+    alert("Please use between 1 and 40 characters.");
+    
+  } else if (input_author.value.length < 1 || input_author.value.length > 15) {
+      alert("Please use between 1 and 15 characters.");
+  } else if (input_year.value > 2025) {
+      alert("Sorry, the book hasn't been written in the future.");
+  } else if (input_pages.value < 1 || input_pages.value > 9999) {  
+      alert("Sorry, the book needs to have at least one page and it is doubtful if it is longer than 9999 pages.")
+  } else {
+
+    let choice;
+    
+    for (let i = 0; i < input_read.length; i++) {
+      if (input_read[i].checked) {
+        choice = input_read[i].value
+      }
     }
+    e.preventDefault();
+    console.log(choice);
+    addBookToLibrary(input_title.value, input_author.value, input_year.value, input_pages.value, choice);
+    displayBooks();
+    console.log(myLibrary);
+    input_title.value = '';
+    input_author.value = '';
+    input_year.value = '';
+    input_pages.value = '';
+
+    toggleForm();
   }
-  console.log(choice);
-  addBookToLibrary(input_title.value, input_author.value, input_year.value, input_pages.value, choice);
-  displayBooks();
-  console.log(myLibrary);
-  input_title.value = '';
-  input_author.value = '';
-  input_year.value = '';
-  input_pages.value = '';
 })
 
 //Display Books

@@ -131,8 +131,8 @@ a {
 .submit {
   margin: 0.5rem 0;
   padding: 0.5rem;
-  color: indigo;
-  border: 1px solid indigo;
+  color: var(--main-bg);
+  border: 1px solid var(--main-bg);
 }
 
 .submit:hover {
